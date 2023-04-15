@@ -1,0 +1,45 @@
+Abstract
+TMB - predictor of response to immunotherapy 
+Tumor only variant calling (no matched normal) - inflated TMB estimates 
+TabNet - XGBoost and LightGMB (best one) for somatic v. germline classification 
+Tabular data 
+Supervised classification
+TCGA dataset 
+R2 - ?
+Generalize across cancer types and capture kits (100% call rate)
+TMB estimates for black patients are extremely inflated relative to white patients due to racial bias of germline databases 
+XGBoost and LightGBM eliminates significant racial bias 
+Introduction
+Somatic mutation count can predict response to immune checkpoint inhibitors (ICI)
+“Tumor mutation burden (TMB)—defined as the number of coding nonsynonymous somatic mutations per megabase of DNA, and often measured through whole-exome sequencing (WES)—is a strong predictor of therapeutic response and survival in solid tumors” 
+Phase 2 KEYNOTE-158 trial - FDA approved TMB as marker across all tumor subtypes for anti-PD1 ICI
+Gain of function mutations - oncogenes 
+Loss of function mutations - tumor suppressors 
+VAF - variant allele fraction
+Lack of matched normal increases false positive rate 
+Some computational methods developed to improve tumor-only variant calling (pureCN and SGZ) - Bayesian methods that infer the altered genomic state of the tumor to estimate somatic and germline probabilities in samples without matched normal 
+Global properties of cancer genome - purity and ploidy - DNA copy number also measured - used along with VAF to calculate the posterior probability a mutation is somatic - coupled with complex statistics of NGS 
+Tree-based ML methods with gradient boosting 
+Results 
+Train/test 
+Somatic mutation calling pipeline 
+TMB, CNV, and some composition (tumor purity) can impact mutation calling 
+Multiple cancer sample types - model trained this way 
+Model 
+30 mutation and copy number specific features using tumor only samples
+COSMIC database 
+Major allele frequency 
+Trinucleotide context and base substitution type characterized (basis for mutational signature) 
+Heterozygous germline SNPS of similar copy number are identified 
+XGboost - a gradient boosting tree-based algorithm (Light GBM is similar) 
+TabNet leverages neural attention modules (feature masks)
+Saliency of features and each instance 
+Training set construction 
+105 tumor samples in sever cancer subtypes from TCGA 
+Somatic and germline truth labels generated using results from variant calling pipeline that included patient-matched normal samples 
+Features for tabular ML classifiers engineered using variant and CNV calls from independent tumor-only pipeline
+Sequenced at Broad Institute using Agilent custom v2 exome-capture kit
+Validation set construction 
+45 tumor subtypes absent from training data 
+WES kit shown to exhibit district genomic coverage compared to V2 Agilent kit used in training 
+Avoided overfitting? 
