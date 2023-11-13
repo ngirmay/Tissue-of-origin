@@ -1,7 +1,4 @@
 Gene Expression Analysis Across Cancer Types
-This report presents a series of visualizations that represent the analysis of gene expression data across various cancer types. The visualizations are intended to convey patterns, distributions, and relationships within the data, and to suggest possible future directions for research.
-
-Gene Expression Analysis Across Cancer Types
 This report presents a series of visualizations that represent the analysis of gene expression data across various cancer types. The visualizations are intended to convey patterns, distributions, and relationships within the data, and to suggest possible future directions for this tissue of origin project.
 
 Heatmap of Log2 Transformed Gene Expression by Cancer Type
